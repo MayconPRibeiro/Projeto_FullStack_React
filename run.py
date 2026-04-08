@@ -1,0 +1,34 @@
+from flask import Flask
+from src.config.data_base import init_db
+from src.routes import init_routes
+from dotenv import load_dotenv
+import os
+from flask_jwt_extended import JWTManager
+from datetime import timedelta
+from flask_cors import CORS
+
+def create_app():
+    """
+    Função que cria e configura a aplicação Flask.
+    """
+    
+    load_dotenv()
+    
+    app = Flask(__name__)
+    CORS(app, resources={r"/*": {"origins": "*"}}) 
+
+    # Configuração JWT
+    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
+    app.config['JWT_ACCESS_TOKEN_EXPIRES'] = timedelta(hours=2)
+    jwt = JWTManager(app)
+
+    init_db(app)
+
+    init_routes(app)
+
+    return app
+
+app = create_app()
+
+if __name__ == '__main__':
+    app.run(debug=True)
