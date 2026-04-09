@@ -1,10 +1,15 @@
-import CadastroSeller from './CadastroSeller';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import CadastroSeller from './components/CadastroSeller';
+import Login from './components/Login';
 
 function App() {
   return (
-    <div className="App">
-      <CadastroSeller />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/cadastro" element={<CadastroSeller />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
