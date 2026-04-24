@@ -6,4 +6,6 @@ const api = axios.create({
 
 export const cadastrarSeller = (dados) => api.post('/user', dados);
 
-export const loginSeller = (dados) => api.post('/login', dados);
+export const loginSeller = (dados) => api.post('/user/login', dados); // ← /login para /user/login
+
+export const verificarToken = (dados) => api.post('/user/verify', dados);

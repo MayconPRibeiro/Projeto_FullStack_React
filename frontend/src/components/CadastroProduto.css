@@ -1,0 +1,91 @@
+.cadastro-produto-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5;
+    padding: 2rem 1rem;
+}
+
+.cadastro-produto-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 520px;
+}
+
+.cadastro-produto-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cadastro-produto-header h2 {
+    color: #1a3c6e;
+    margin: 0;
+}
+
+.btn-voltar {
+    background: none;
+    border: none;
+    color: #1a3c6e;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+.btn-voltar:hover { background-color: #f0f2f5; }
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+}
+
+.campo input,
+.campo select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.campo input:focus,
+.campo select:focus {
+    border-color: #1a3c6e;
+}
+
+.campo-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.campo-row .campo { flex: 1; }
+
+.btn-salvar {
+    width: 100%;
+    padding: 0.85rem;
+    background-color: #1a3c6e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+
+.btn-salvar:hover { background-color: #15305a; }

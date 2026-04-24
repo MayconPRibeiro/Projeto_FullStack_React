@@ -18,29 +18,31 @@ function Login() {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            const response = await loginSeller(formData);
-            const { access_token } = response.data;
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await loginSeller(formData);
+    const { access_token } = response.data;
 
-            localStorage.setItem('access_token', access_token);
+    localStorage.setItem('access_token', access_token);
 
-            alert("Login realizado com sucesso!");
-            // redirecionar para o dashboard depois
-        } catch (error) {
-            if (error.response?.status === 401) {
-                alert("Senha inválida.");
-            } else if (error.response?.status === 404) {
-                alert("Usuário não encontrado.");
-            } else if (error.response?.status === 403) {
-                alert("Conta não ativada.");
-            } else {
-                alert("Erro ao fazer login.");
-            }
-            console.error(error);
-        }
-    };
+    alert("Login realizado com sucesso!");
+    navigate('/dashboard'); // ← adicione a rota do verify aqui
+  } catch (error) {
+    const status = error.response?.status;
+    if (status === 401) {
+      alert("Senha inválida.");
+    } else if (status === 404) {
+      alert("Usuário não encontrado.");
+    } else if (status === 403) {
+      navigate('/verificar', { state: { email: formData.email } });
+    } else {
+      const mensagem = error.response?.data?.erro || "Erro ao fazer login.";
+      alert(mensagem);
+    }
+    console.error(error);
+  }
+};
 
     return (
         <div className="login-container">

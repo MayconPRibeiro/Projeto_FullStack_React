@@ -17,16 +17,19 @@ function CadastroSeller() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await cadastrarSeller(formData);
-      alert("Seller cadastrado com sucesso!");
-    } catch (error) {
-      console.error("Erro ao cadastrar:", error);
-      alert("Erro ao cadastrar. Verifique o console.");
-    }
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  try {
+    await cadastrarSeller(formData);
+    alert("Seller cadastrado com sucesso! Verifique o WhatsApp para ativar sua conta.");
+    navigate('/');
+  } catch (error) {
+    console.error("Erro ao cadastrar:", error);
+    // Pega a mensagem exata que vem do backend
+    const mensagem = error.response?.data?.erro || "Erro ao cadastrar. Tente novamente.";
+    alert(mensagem);
+  }
+};
 
   return (
     <div className="cadastro-container">
