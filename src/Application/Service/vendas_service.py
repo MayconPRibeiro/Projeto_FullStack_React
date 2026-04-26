@@ -66,3 +66,12 @@ class VendasService:
             venda.quantidade,
             venda.preco_unitario
         )
+    
+    @staticmethod
+    def list_vendas(user_id):
+        vendas = Venda.query.join(Produto).filter(Produto.user_id == user_id).all()
+
+        return [
+            VendasDomain(v.id, v.produto_id, v.quantidade, v.preco_unitario)
+            for v in vendas
+        ]

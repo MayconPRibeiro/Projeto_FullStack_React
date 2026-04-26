@@ -5,6 +5,8 @@ import VerificarConta from './components/VerificarConta';
 import ListagemProdutos from './components/ListagemProdutos';
 import CadastroProduto from './components/CadastroProduto';
 import EditarProduto from './components/EditarProduto';
+import CadastroVenda from './components/CadastroVenda';
+import ListagemVendas from './components/ListagemVendas';
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
         <Route path="/dashboard" element={<ListagemProdutos />} />
         <Route path="/produtos/cadastrar" element={<CadastroProduto />} />
         <Route path="/produtos/editar/:id" element={<EditarProduto />} />
+        <Route path="/vendas" element={<ListagemVendas />} />
+        <Route path="/vendas/cadastrar" element={<CadastroVenda />} />
       </Routes>
     </BrowserRouter>
   );

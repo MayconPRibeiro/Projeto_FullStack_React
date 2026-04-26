@@ -62,3 +62,8 @@ def init_routes(app):
     @jwt_required()
     def create_venda():
         return VendasController.create_venda()
+    
+    @app.route('/venda', methods=['GET'])
+    @jwt_required()
+    def list_vendas():
+        return VendasController.list_vendas()

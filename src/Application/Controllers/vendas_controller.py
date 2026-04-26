@@ -33,3 +33,13 @@ class VendasController:
         except Exception as e:
             print(f"Erro ao criar venda: {str(e)}")
             return make_response(jsonify({"erro": "Erro interno"}), 500)
+        
+    @staticmethod
+    def list_vendas():
+        user_id = int(get_jwt_identity())
+
+        vendas = VendasService.list_vendas(user_id)
+
+        return jsonify({
+            "vendas": [venda.to_dict() for venda in vendas]
+        }), 200
