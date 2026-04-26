@@ -4,6 +4,7 @@ import Login from './components/Login';
 import VerificarConta from './components/VerificarConta';
 import ListagemProdutos from './components/ListagemProdutos';
 import CadastroProduto from './components/CadastroProduto';
+import EditarProduto from './components/EditarProduto';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/verificar" element={<VerificarConta />} />
         <Route path="/dashboard" element={<ListagemProdutos />} />
         <Route path="/produtos/cadastrar" element={<CadastroProduto />} />
+        <Route path="/produtos/editar/:id" element={<EditarProduto />} />
       </Routes>
     </BrowserRouter>
   );
