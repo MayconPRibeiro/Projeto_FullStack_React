@@ -38,7 +38,15 @@ function ListagemProdutos() {
     };
 
     useEffect(() => {
+        const token = localStorage.getItem('access_token');
+
+        if (!token) {
+            navigate('/', { replace: true });
+            return;
+        }
+
         carregarProdutos();
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

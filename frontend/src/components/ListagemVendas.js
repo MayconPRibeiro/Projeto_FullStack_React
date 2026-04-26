@@ -9,6 +9,13 @@ function ListagemVendas() {
     const [vendas, setVendas] = useState([]);
 
     useEffect(() => {
+        const token = localStorage.getItem('access_token');
+
+        if (!token) {
+            navigate('/', { replace: true });
+            return;
+        }
+
         carregar();
     }, []);
 

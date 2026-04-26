@@ -6,7 +6,8 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('access_token');
-        navigate('/');
+
+        navigate('/', { replace: true });
     };
 
     return (
