@@ -40,16 +40,25 @@ function ListagemVendas() {
                 {vendas.length === 0 ? (
                     <p className="vazio">Nenhuma venda ainda.</p>
                 ) : (
-                    <div className="produtos-grid">
-                        {vendas.map(v => (
-                            <div key={v.id} className="produto-card">
+                <div className="produtos-grid">
+                    {vendas.map((v) => (
+                        <div key={v.id} className="venda-card">
+                            <div className="venda-topo">
                                 <h3>Venda #{v.id}</h3>
-                                <p>📦 Produto ID: {v.produto_id}</p>
-                                <p>Quantidade: {v.quantidade}</p>
-                                <p>💰 R$ {Number(v.preco_unitario).toFixed(2)}</p>
+                                <span className="badge badge-ativo">Concluída</span>
                             </div>
-                        ))}
-                    </div>
+
+                            <div className="venda-info">
+                                <p>📦 Produto ID: {v.produto_id}</p>
+                                <p>🛒 Quantidade: {v.quantidade}</p>
+                                <p>💰 Valor Unitário: R$ {Number(v.preco_unitario).toFixed(2)}</p>
+                                <p className="total">
+                                    💵 Total: R$ {(v.quantidade * v.preco_unitario).toFixed(2)}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
                 )}
             </div>
         </>

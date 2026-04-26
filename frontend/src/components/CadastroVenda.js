@@ -45,6 +45,9 @@ function CadastroVenda() {
 
             <div className="cadastro-produto-container">
                 <div className="cadastro-produto-card">
+                    <button className="btn-voltar" onClick={() => navigate('/vendas')}>
+                        ← Voltar
+                    </button>
                     <h2>Nova Venda</h2>
 
                     <form onSubmit={handleSubmit}>
