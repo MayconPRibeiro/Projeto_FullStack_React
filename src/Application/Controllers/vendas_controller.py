@@ -12,12 +12,13 @@ class VendasController:
         data = request.get_json()
         produto_id = data.get('produto_id')
         quantidade = data.get('quantidade')
+        preco_unitario = data.get('preco_unitario')
 
         if produto_id is None or quantidade is None:
             return make_response(jsonify({"erro": "Campos obrigatórios"}), 400)
 
         try:
-            venda = VendasService.create_venda(produto_id, quantidade, user_id)
+            venda = VendasService.create_venda(produto_id, quantidade, user_id, preco_unitario)
 
             return make_response(jsonify({
                 "mensagem": "Venda realizada com sucesso",

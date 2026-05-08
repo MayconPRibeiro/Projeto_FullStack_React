@@ -8,7 +8,7 @@ from src.Domain.exceptions import NotFoundError, ValidationError
 class VendasService:
 
     @staticmethod
-    def create_venda(produto_id, quantidade, user_id):
+    def create_venda(produto_id, quantidade, user_id, preco_unitario=None):
 
         #valida quantidade
         try:
@@ -40,12 +40,12 @@ class VendasService:
             raise ValidationError("Quantidade em estoque insuficiente")
 
         #preço REAL do momento
-        preco = produto.preco
+        preco_final = float(preco_unitario) if preco_unitario is not None else produto.preco
 
         venda = Venda(
             produto_id=produto_id,
             quantidade=quantidade,
-            preco_unitario=preco
+            preco_unitario=preco_final
         )
 
         db.session.add(venda)
