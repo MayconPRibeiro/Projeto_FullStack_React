@@ -7,6 +7,7 @@ import CadastroProduto from './components/CadastroProduto';
 import EditarProduto from './components/EditarProduto';
 import CadastroVenda from './components/CadastroVenda';
 import ListagemVendas from './components/ListagemVendas';
+import Dashboard from './components/Dashboard';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/cadastro" element={<CadastroSeller />} />
         <Route path="/verificar" element={<VerificarConta />} />
-        <Route path="/dashboard" element={<ListagemProdutos />} />
+        <Route path="/dashboard" element={<Dashboard />} />         {/* ← corrigido */}
+        <Route path="/produtos" element={<ListagemProdutos />} />   {/* ← novo */}
         <Route path="/produtos/cadastrar" element={<CadastroProduto />} />
         <Route path="/produtos/editar/:id" element={<EditarProduto />} />
         <Route path="/vendas" element={<ListagemVendas />} />

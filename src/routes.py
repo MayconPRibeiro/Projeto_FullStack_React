@@ -1,3 +1,4 @@
+from src.Application.Controllers.dashboard_controller import DashboardController
 from src.Application.Controllers.user_controller import UserController
 from src.Application.Controllers.produto_controller import ProdutoController
 from flask import jsonify, make_response
@@ -67,3 +68,8 @@ def init_routes(app):
     @jwt_required()
     def list_vendas():
         return VendasController.list_vendas()
+    
+    @app.route('/dashboard', methods=['GET'])
+    @jwt_required()
+    def get_dashboard():
+        return DashboardController.get_dashboard()

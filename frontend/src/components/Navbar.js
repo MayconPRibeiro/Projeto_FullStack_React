@@ -6,7 +6,6 @@ function Navbar() {
 
     const handleLogout = () => {
         localStorage.removeItem('access_token');
-
         navigate('/', { replace: true });
     };
 
@@ -17,7 +16,11 @@ function Navbar() {
             </div>
 
             <div className="navbar-links">
-                <button onClick={() => navigate('/dashboard')}>
+                <button onClick={() => navigate('/dashboard')}>  {/* ← novo */}
+                    Dashboard
+                </button>
+
+                <button onClick={() => navigate('/produtos')}>   {/* ← corrigido */}
                     Produtos
                 </button>
 
