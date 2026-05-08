@@ -15,6 +15,8 @@ function EditarProduto() {
         status: 'Ativo'
     });
 
+    const [previewImage, setPreviewImage] = useState(null);
+
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -40,7 +42,19 @@ function EditarProduto() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await atualizarProduto(id, formData);
+
+            const dados = new FormData();
+
+            dados.append('name', formData.name);
+            dados.append('preco', formData.preco);
+            dados.append('quantidade', formData.quantidade);
+            dados.append('status', formData.status);
+
+            if (formData.img instanceof File) {
+                dados.append('img', formData.img);
+            }
+
+            await atualizarProduto(id, dados);
             alert("Produto atualizado com sucesso!");
             navigate('/dashboard');
         } catch (error) {
@@ -96,13 +110,44 @@ function EditarProduto() {
                         </div>
                     </div>
 
+                    {(previewImage || formData.img) && (
+
+                        <img
+                            src={
+                                previewImage
+                                    ? previewImage
+                                    : `http://localhost:5000/uploads/${formData.img}`
+                            }
+                            alt="Produto"
+                            width="150"
+                        />
+
+                    )}
+
                     <div className="campo">
                         <label>Imagem</label>
                         <input
+                            type="file"
                             name="img"
-                            value={formData.img}
-                            onChange={handleChange}
-                            required
+                            accept='image/*'
+                            onChange={(e) => {
+
+                                const file = e.target.files[0];
+
+                                if (!file) return;
+
+                                const imageUrl = URL.createObjectURL(file);
+
+                                console.log(file);
+                                console.log(imageUrl);
+
+                                setPreviewImage(imageUrl);
+
+                                setFormData((prev) => ({
+                                    ...prev,
+                                    img: file
+                                }));
+                            }}
                         />
                     </div>
 

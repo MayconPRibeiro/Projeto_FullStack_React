@@ -12,8 +12,18 @@ export const listarProdutos = () => api.get('/product', getAuthHeader());
 
 export const buscarProduto = (id) => api.get(`/product/${id}`, getAuthHeader());
 
-export const cadastrarProduto = (dados) => api.post('/product', dados, getAuthHeader());
+export const cadastrarProduto = (dados) => api.post('/product', dados, {
+    headers: {
+        ...getAuthHeader().headers,
+        'Content-Type': 'multipart/form-data'
+    }
+});
 
-export const atualizarProduto = (id, dados) => api.put(`/product/${id}`, dados, getAuthHeader());
+export const atualizarProduto = (id, dados) => api.put(`/product/${id}`, dados, {
+    headers: {
+        ...getAuthHeader().headers,
+        'Content-Type': 'multipart/form-data'
+    }
+});
 
 export const inativarProduto = (id) => api.patch(`/product/${id}`, {}, getAuthHeader());

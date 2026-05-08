@@ -1,7 +1,7 @@
 from src.Application.Controllers.dashboard_controller import DashboardController
 from src.Application.Controllers.user_controller import UserController
 from src.Application.Controllers.produto_controller import ProdutoController
-from flask import jsonify, make_response
+from flask import jsonify, make_response, send_from_directory
 from flask_jwt_extended import jwt_required
 from src.Application.Controllers.vendas_controller import VendasController
 
@@ -73,3 +73,11 @@ def init_routes(app):
     @jwt_required()
     def get_dashboard():
         return DashboardController.get_dashboard()
+    
+    @app.route('/uploads/<filename>')
+    def get_image(filename):
+
+        return send_from_directory(
+            'uploads',
+            filename
+        )

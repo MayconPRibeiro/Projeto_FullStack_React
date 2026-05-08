@@ -80,7 +80,7 @@ function ListagemProdutos() {
                             >
                                 {produto.img && (
                                     <img
-                                        src={produto.img}
+                                        src={`http://localhost:5000/uploads/${produto.img}`}
                                         alt={produto.name}
                                         className="produto-img"
                                     />

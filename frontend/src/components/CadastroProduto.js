@@ -21,7 +21,16 @@ function CadastroProduto() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await cadastrarProduto(formData);
+
+            const dados = new FormData();
+
+            dados.append('name', formData.name);
+            dados.append('preco', formData.preco);
+            dados.append('quantidade', formData.quantidade);
+            dados.append('img', formData.img);
+            dados.append('status', formData.status);
+
+            await cadastrarProduto(dados);
             alert("Produto cadastrado com sucesso!");
             navigate('/dashboard');
         } catch (error) {
@@ -81,9 +90,11 @@ function CadastroProduto() {
                     <div className="campo">
                         <label>URL da Imagem</label>
                         <input
+                            type="file"
                             name="img"
-                            placeholder="https://exemplo.com/imagem.jpg"
-                            onChange={handleChange}
+                            accept='image/*'
+                            placeholder="Selecionar imagem"
+                            onChange={(e) => setFormData({ ...formData, img: e.target.files[0] })}
                             required
                         />
                     </div>
