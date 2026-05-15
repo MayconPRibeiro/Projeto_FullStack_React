@@ -8,6 +8,8 @@
 - **Luis Gabriel de Jesus Barbosa** — 2402947  
 - **Gustavo Meirelles Festa** — 2403079
 
+---
+
 ## 📌 Objetivo
 Desenvolver um sistema para gestão de estoque e vendas de mini mercados, garantindo segurança, controle de acesso e gestão eficiente de produtos e vendas.
 
